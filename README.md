@@ -152,3 +152,204 @@ LIMIT 10;
 | Electric Motor                                                                                                                     | Capital Goods                      | 140647.00       | 
 | Audi A6                                                                                                                            | Automobiles & Components           | 111282.00       | 
 | Average of all GM vehicles produced and used in the 10 year life-cycle.                                                            | Automobiles & Components           | 100621.00       | 
+
+### 4.3. What are the industries with the highest contribution to carbon emissions?
+
+```
+SELECT
+	ig.industry_group,
+	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+FROM product_emissions pe
+JOIN industry_groups ig ON pe.industry_group_id = ig.id
+GROUP BY ig.industry_group
+ORDER BY total_emissions DESC;
+```
+
+| industry_group                                                         | total_emissions | 
+| ---------------------------------------------------------------------: | --------------: | 
+| Electrical Equipment and Machinery                                     | 9801558.00      | 
+| Automobiles & Components                                               | 2582264.00      | 
+| Materials                                                              | 577595.00       | 
+| Technology Hardware & Equipment                                        | 363776.00       | 
+| Capital Goods                                                          | 258712.00       | 
+| "Food, Beverage & Tobacco"                                             | 111131.00       | 
+| "Pharmaceuticals, Biotechnology & Life Sciences"                       | 72486.00        | 
+| Chemicals                                                              | 62369.00        | 
+| Software & Services                                                    | 46544.00        | 
+| Media                                                                  | 23017.00        | 
+| Energy                                                                 | 10774.00        | 
+| "Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber" | 8909.00         | 
+| "Mining - Iron, Aluminum, Other Metals"                                | 8181.00         | 
+| Consumer Durables & Apparel                                            | 7309.00         | 
+| Commercial & Professional Services                                     | 5265.00         | 
+| Containers & Packaging                                                 | 2988.00         | 
+| Tires                                                                  | 2022.00         | 
+| Food & Staples Retailing                                               | 1481.00         | 
+| "Consumer Durables, Household and Personal Products"                   | 931.00          | 
+| Telecommunication Services                                             | 418.00          | 
+| "Textiles, Apparel, Footwear and Luxury Goods"                         | 387.00          | 
+| Utilities                                                              | 244.00          | 
+| Trading Companies & Distributors and Commercial Services & Supplies    | 239.00          | 
+| Food & Beverage Processing                                             | 141.00          | 
+| Gas Utilities                                                          | 122.00          | 
+| Semiconductors & Semiconductor Equipment                               | 54.00           | 
+| Retailing                                                              | 30.00           | 
+| Semiconductors & Semiconductors Equipment                              | 3.00            | 
+| Tobacco                                                                | 1.00            | 
+| Household & Personal Products                                          | 0.00            | 
+
+### 4.4. What are the companies with the highest contribution to carbon emissions?
+
+```
+SELECT
+	c.company_name,
+	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+FROM product_emissions pe
+JOIN companies c ON pe.company_id = c.id
+GROUP BY c.company_name
+ORDER BY total_emissions DESC
+LIMIT 10;
+```
+
+| company_name                            | total_emissions | 
+| --------------------------------------: | --------------: | 
+| "Gamesa Corporación Tecnológica, S.A."  | 9778464.00      | 
+| Daimler AG                              | 1594300.00      | 
+| Volkswagen AG                           | 655960.00       | 
+| "Mitsubishi Gas Chemical Company, Inc." | 212016.00       | 
+| "Hino Motors, Ltd."                     | 191687.00       | 
+| Arcelor Mittal                          | 167007.00       | 
+| Weg S/A                                 | 160655.00       | 
+| General Motors Company                  | 137007.00       | 
+| "Lexmark International, Inc."           | 132012.00       | 
+| "Daikin Industries, Ltd."               | 105600.00       | 
+
+### 4.5. What are the countries with the highest contribution to carbon emissions?
+
+```
+SELECT
+	co.country_name,
+	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+FROM product_emissions pe
+JOIN countries co ON pe.country_id = co.id
+GROUP BY co.country_name
+ORDER BY total_emissions DESC
+LIMIT 10;
+```
+
+| country_name | total_emissions | 
+| -----------: | --------------: | 
+| Spain        | 9786130.00      | 
+| Germany      | 2251225.00      | 
+| Japan        | 653237.00       | 
+| USA          | 518381.00       | 
+| South Korea  | 186965.00       | 
+| Brazil       | 169337.00       | 
+| Luxembourg   | 167007.00       | 
+| Netherlands  | 70417.00        | 
+| Taiwan       | 62875.00        | 
+| India        | 24574.00        | 
+
+### 4.6. What is the trend of carbon footprints (PCFs) over the years?
+
+```
+SELECT
+	year,
+	ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
+FROM product_emissions
+GROUP BY year
+ORDER BY year;
+```
+
+| year | total_emissions | 
+| ---: | --------------: | 
+| 2013 | 503857.00       | 
+| 2014 | 624226.00       | 
+| 2015 | 10840415.00     | 
+| 2016 | 1640182.00      | 
+| 2017 | 340271.00       | 
+
+### 4.7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+
+```
+SELECT
+	ig.industry_group,
+	year,
+	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS yearly_emissions
+FROM product_emissions pe
+JOIN industry_groups ig ON pe.industry_group_id = ig.id
+GROUP BY ig.industry_group, year
+ORDER BY ig.industry_group, year;
+```
+
+| industry_group                                                         | year | yearly_emissions | 
+| ---------------------------------------------------------------------: | ---: | ---------------: | 
+| "Consumer Durables, Household and Personal Products"                   | 2015 | 931.00           | 
+| "Food, Beverage & Tobacco"                                             | 2013 | 4995.00          | 
+| "Food, Beverage & Tobacco"                                             | 2014 | 2685.00          | 
+| "Food, Beverage & Tobacco"                                             | 2015 | 0.00             | 
+| "Food, Beverage & Tobacco"                                             | 2016 | 100289.00        | 
+| "Food, Beverage & Tobacco"                                             | 2017 | 3162.00          | 
+| "Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber" | 2015 | 8909.00          | 
+| "Mining - Iron, Aluminum, Other Metals"                                | 2015 | 8181.00          | 
+| "Pharmaceuticals, Biotechnology & Life Sciences"                       | 2013 | 32271.00         | 
+| "Pharmaceuticals, Biotechnology & Life Sciences"                       | 2014 | 40215.00         | 
+| "Textiles, Apparel, Footwear and Luxury Goods"                         | 2015 | 387.00           | 
+| Automobiles & Components                                               | 2013 | 130189.00        | 
+| Automobiles & Components                                               | 2014 | 230015.00        | 
+| Automobiles & Components                                               | 2015 | 817227.00        | 
+| Automobiles & Components                                               | 2016 | 1404833.00       | 
+| Capital Goods                                                          | 2013 | 60190.00         | 
+| Capital Goods                                                          | 2014 | 93699.00         | 
+| Capital Goods                                                          | 2015 | 3505.00          | 
+| Capital Goods                                                          | 2016 | 6369.00          | 
+| Capital Goods                                                          | 2017 | 94949.00         | 
+| Chemicals                                                              | 2015 | 62369.00         | 
+| Commercial & Professional Services                                     | 2013 | 1157.00          | 
+| Commercial & Professional Services                                     | 2014 | 477.00           | 
+| Commercial & Professional Services                                     | 2016 | 2890.00          | 
+| Commercial & Professional Services                                     | 2017 | 741.00           | 
+| Consumer Durables & Apparel                                            | 2013 | 2867.00          | 
+| Consumer Durables & Apparel                                            | 2014 | 3280.00          | 
+| Consumer Durables & Apparel                                            | 2016 | 1162.00          | 
+| Containers & Packaging                                                 | 2015 | 2988.00          | 
+| Electrical Equipment and Machinery                                     | 2015 | 9801558.00       | 
+| Energy                                                                 | 2013 | 750.00           | 
+| Energy                                                                 | 2016 | 10024.00         | 
+| Food & Beverage Processing                                             | 2015 | 141.00           | 
+| Food & Staples Retailing                                               | 2014 | 773.00           | 
+| Food & Staples Retailing                                               | 2015 | 706.00           | 
+| Food & Staples Retailing                                               | 2016 | 2.00             | 
+| Gas Utilities                                                          | 2015 | 122.00           | 
+| Household & Personal Products                                          | 2013 | 0.00             | 
+| Materials                                                              | 2013 | 200513.00        | 
+| Materials                                                              | 2014 | 75678.00         | 
+| Materials                                                              | 2016 | 88267.00         | 
+| Materials                                                              | 2017 | 213137.00        | 
+| Media                                                                  | 2013 | 9645.00          | 
+| Media                                                                  | 2014 | 9645.00          | 
+| Media                                                                  | 2015 | 1919.00          | 
+| Media                                                                  | 2016 | 1808.00          | 
+| Retailing                                                              | 2014 | 19.00            | 
+| Retailing                                                              | 2015 | 11.00            | 
+| Semiconductors & Semiconductor Equipment                               | 2014 | 50.00            | 
+| Semiconductors & Semiconductor Equipment                               | 2016 | 4.00             | 
+| Semiconductors & Semiconductors Equipment                              | 2015 | 3.00             | 
+| Software & Services                                                    | 2013 | 6.00             | 
+| Software & Services                                                    | 2014 | 146.00           | 
+| Software & Services                                                    | 2015 | 22856.00         | 
+| Software & Services                                                    | 2016 | 22846.00         | 
+| Software & Services                                                    | 2017 | 690.00           | 
+| Technology Hardware & Equipment                                        | 2013 | 61100.00         | 
+| Technology Hardware & Equipment                                        | 2014 | 167361.00        | 
+| Technology Hardware & Equipment                                        | 2015 | 106157.00        | 
+| Technology Hardware & Equipment                                        | 2016 | 1566.00          | 
+| Technology Hardware & Equipment                                        | 2017 | 27592.00         | 
+| Telecommunication Services                                             | 2013 | 52.00            | 
+| Telecommunication Services                                             | 2014 | 183.00           | 
+| Telecommunication Services                                             | 2015 | 183.00           | 
+| Tires                                                                  | 2015 | 2022.00          | 
+| Tobacco                                                                | 2015 | 1.00             | 
+| Trading Companies & Distributors and Commercial Services & Supplies    | 2015 | 239.00           | 
+| Utilities                                                              | 2013 | 122.00           | 
+| Utilities                                                              | 2016 | 122.00           | 
