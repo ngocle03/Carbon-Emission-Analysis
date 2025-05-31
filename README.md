@@ -115,6 +115,7 @@ LIMIT 10;
 
 **Explanation**
 
+
 This query identifies the top 10 products with the highest total carbon emissions recorded in the dataset. It joins the product_emissions and industry_groups tables to display each product's industry group. The carbon_footprint_pcf values are summed and rounded to two decimal places, and results are sorted in descending order of emissions.
 
 **Insights & Conclusions**
