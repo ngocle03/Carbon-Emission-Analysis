@@ -91,7 +91,9 @@ LIMIT 5;
 ### 4.1. Which products contribute the most to carbon emissions?
 
 ```
-SELECT product_name, ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
+SELECT
+    product_name
+    ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
 FROM product_emissions
 GROUP BY product_name
 ORDER BY total_emissions DESC
@@ -112,7 +114,6 @@ LIMIT 10;
 | Average of all GM vehicles produced and used in the 10 year life-cycle.                                                            | 100621.00       | 
 
 **Explanation**
-
 This query identifies the top 10 products with the highest total carbon emissions recorded in the dataset. It joins the product_emissions and industry_groups tables to display each product's industry group. The carbon_footprint_pcf values are summed and rounded to two decimal places, and results are sorted in descending order of emissions.
 
 **Insights & Conclusions**
@@ -124,10 +125,15 @@ This query identifies the top 10 products with the highest total carbon emission
 
 ### 4.2. What are the industry groups of these products?
 ```
-SELECT pe.product_name, ig.industry_group, ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+SELECT
+    pe.product_name,
+    ig.industry_group,
+    ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
 FROM product_emissions pe
 JOIN industry_groups ig ON pe.industry_group_id = ig.id
-GROUP BY pe.product_name, ig.industry_group
+GROUP BY
+    pe.product_name,
+    ig.industry_group
 ORDER BY total_emissions DESC
 LIMIT 10;
 ```
