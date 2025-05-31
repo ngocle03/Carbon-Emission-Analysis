@@ -113,12 +113,12 @@ LIMIT 10;
 | Audi A6                                                                                                                            | 111282.00       | 
 | Average of all GM vehicles produced and used in the 10 year life-cycle.                                                            | 100621.00       | 
 
-**Explanation**
+**🧾 Explanation**
 
 
 This query identifies the top 10 products with the highest total carbon emissions recorded in the dataset. It joins the product_emissions and industry_groups tables to display each product's industry group. The carbon_footprint_pcf values are summed and rounded to two decimal places, and results are sorted in descending order of emissions.
 
-**Insights & Conclusions**
+**💡 Insights & Conclusions**
 * Wind turbines dominate the emissions chart, with the G128 and G132 models each responsible for over 3 million kg of CO₂ equivalent. While wind energy is clean in use, their production (especially the steel and composite components) carries a heavy carbon footprint.
 * The Electrical Equipment and Machinery industry clearly contributes significantly due to large-scale infrastructure products like turbines.
 * Vehicles, including Land Cruiser Prado, Audi A6, and GM fleet averages, appear multiple times, reflecting the high impact of automotive production and long-term use.
@@ -152,6 +152,27 @@ LIMIT 10;
 | Electric Motor                                                                                                                     | Capital Goods                      | 140647.00       | 
 | Audi A6                                                                                                                            | Automobiles & Components           | 111282.00       | 
 | Average of all GM vehicles produced and used in the 10 year life-cycle.                                                            | Automobiles & Components           | 100621.00       | 
+
+**🧾 Explanation**
+
+
+This query identifies the top 10 products that contribute the most to carbon emissions in the dataset. It does so by:
+* Summing the carbon_footprint_pcf values for each product name.
+* Rounding the total emissions to two decimal places.
+* Sorting the results in descending order.
+* Limiting the output to the top 10 products.
+The result combines both product names and their respective industry groups (merged manually or from a join in extended queries) for better contextual understanding.
+
+**💡 Insights & Conclusions**
+* Wind turbines, particularly large-scale models like the G128 and G132 (5 Megawatts), dominate the carbon emission chart. Despite being clean energy producers during operation, their manufacturing process is highly carbon-intensive, likely due to heavy materials like steel, copper, and rare earth elements.
+* Products from the Electrical Equipment and Machinery industry group take up 4 out of the top 4 spots, confirming the high environmental cost of building large-scale industrial machinery.
+* The Automobiles & Components sector also appears multiple times in the top 10, with models such as the Land Cruiser Prado, Audi A6, and even the average GM vehicle contributing significantly to lifecycle emissions.
+* Construction-related products like retaining wall structures (Materials) and TCDE also reflect high emissions, pointing to infrastructure as a major contributor.
+
+**🔍 Observation**
+
+
+Some of the highest-emission products are associated with industries often perceived as environmentally beneficial (e.g., wind turbines), reminding us that sustainable energy still has an environmental cost during manufacturing and setup.
 
 ### 4.3. What are the industries with the highest contribution to carbon emissions?
 
