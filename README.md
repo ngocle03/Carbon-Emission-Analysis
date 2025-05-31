@@ -111,6 +111,15 @@ LIMIT 10;
 | Audi A6                                                                                                                            | 111282.00       | 
 | Average of all GM vehicles produced and used in the 10 year life-cycle.                                                            | 100621.00       | 
 
+**Explanation**
+This query identifies the top 10 products with the highest total carbon emissions recorded in the dataset. It joins the product_emissions and industry_groups tables to display each product's industry group. The carbon_footprint_pcf values are summed and rounded to two decimal places, and results are sorted in descending order of emissions.
+
+**Insights & Conclusions**
+* Wind turbines dominate the emissions chart, with the G128 and G132 models each responsible for over 3 million kg of CO₂ equivalent. While wind energy is clean in use, their production (especially the steel and composite components) carries a heavy carbon footprint.
+* The Electrical Equipment and Machinery industry clearly contributes significantly due to large-scale infrastructure products like turbines.
+* Vehicles, including Land Cruiser Prado, Audi A6, and GM fleet averages, appear multiple times, reflecting the high impact of automotive production and long-term use.
+* Material-intensive infrastructure products like retaining walls and industrial equipment such as electric motors also rank high in emissions.
+* These results highlight that industrial and infrastructure products—despite potentially supporting sustainability—can carry significant upfront environmental costs. This underscores the importance of considering life-cycle emissions when evaluating product sustainability.
 
 ### 4.2. What are the industry groups of these products?
 ```
