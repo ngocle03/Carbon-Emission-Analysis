@@ -85,6 +85,11 @@ LIMIT 5;
 | 4  | "Mining - Iron, Aluminum, Other Metals"                                | 
 | 5  | "Pharmaceuticals, Biotechnology & Life Sciences"                       | 
 
+## 3. Data preprocessing
+
+### 3.1. Remove duplicates
+
+### 3.2. Remove N/A values
 
 ## 4. Data processing
 
