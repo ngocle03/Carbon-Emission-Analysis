@@ -274,6 +274,7 @@ LIMIT 	 10;
 This query sums carbon emissions (carbon_footprint_pcf) per company by joining product_emissions with companies, rounding the totals, and returning the top 10 contributors.
 
 **💡 Insights & Conclusions**
+
 *Gamesa Corporación Tecnológica, S.A., a company in the renewable energy sector, surprisingly tops the list with nearly 9.8 million CO₂e, likely due to emissions from manufacturing heavy equipment like wind turbines.
 *Automotive giants such as Daimler AG, Volkswagen AG, Hino Motors, and General Motors all appear in the top 10, confirming the high carbon intensity of vehicle production.
 *Chemical and industrial manufacturers like Mitsubishi Gas Chemical and Arcelor Mittal also contribute significantly, underlining the energy-intensive nature of their operations.
@@ -455,4 +456,5 @@ This query joins product_emissions with industry_groups, groups the data by indu
 * Media saw a steady drop from 9,645 CO₂e (2013–2014) to 1,808 CO₂e (2016), suggesting reduced emissions intensity or downsizing.
 * Food, Beverage & Tobacco emissions plummeted to 0 CO₂e in 2015, surged in 2016, and then dropped again in 2017 — a volatile trend possibly tied to inconsistent data or specific product records.
 * Capital Goods had a dramatic drop from 93,699 CO₂e (2014) to 3,505 CO₂e (2015) and later climbed again, suggesting a temporary production shift or operational restructuring.
+
 Several industries, notably Tech Hardware, Software, and Media, exhibit sharp emission reductions over specific years. While this may reflect real progress (e.g., tech efficiency gains or changes in sourcing), some drops are likely influenced by data completeness, temporary shifts in operations, or methodological changes. Sustained declines—if validated—point to industries leading in decarbonization or adapting cleaner production techniques.
