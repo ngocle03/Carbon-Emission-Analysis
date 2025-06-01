@@ -80,15 +80,9 @@ LIMIT 	5;
 | 4  | "Mining - Iron, Aluminum, Other Metals"                                | 
 | 5  | "Pharmaceuticals, Biotechnology & Life Sciences"                       | 
 
-## 3. Data preprocessing
+## 3. Data processing
 
-### 3.1. Remove duplicates
-
-### 3.2. Remove N/A values
-
-## 4. Data processing
-
-### 4.1. Which products contribute the most to carbon emissions?
+### 3.1. Which products contribute the most to carbon emissions?
 
 ```
 SELECT
@@ -128,7 +122,7 @@ This query identifies the top 10 products with the highest total carbon emission
 * Material-intensive infrastructure products like retaining walls and industrial equipment such as electric motors also rank high in emissions.
 * These results highlight that industrial and infrastructure products—despite potentially supporting sustainability—can carry significant upfront environmental costs. This underscores the importance of considering life-cycle emissions when evaluating product sustainability.
 
-### 4.2. What are the industry groups of these products?
+### 3.2. What are the industry groups of these products?
 ```
 SELECT
     	  pe.product_name,
@@ -180,7 +174,7 @@ The result combines both product names and their respective industry groups (mer
 
 Some of the highest-emission products are associated with industries often perceived as environmentally beneficial (e.g., wind turbines), reminding us that sustainable energy still has an environmental cost during manufacturing and setup.
 
-### 4.3. What are the industries with the highest contribution to carbon emissions?
+### 3.3. What are the industries with the highest contribution to carbon emissions?
 
 ```
 SELECT
@@ -229,7 +223,23 @@ ORDER BY
 | Tobacco                                                                | 1.00            | 
 | Household & Personal Products                                          | 0.00            | 
 
-### 4.4. What are the companies with the highest contribution to carbon emissions?
+**🧾 Explanation**
+
+This query calculates total carbon emissions per industry by:
+* Joining product_emissions with industry_groups to get industry names.
+* Summing carbon_footprint_pcf for each industry.
+* Rounding totals to 2 decimal places.
+* Sorting industries from highest to lowest emissions.
+It helps identify which industries contribute most to overall emissions.
+
+**💡 Insights & Conclusions**
+* Electrical Equipment and Machinery is by far the largest contributor to carbon emissions, accounting for over 9.8 million CO₂e, significantly ahead of all other sectors.
+* The Automobiles & Components and Materials industries are also high emitters, with totals above 2.5 million and 0.5 million CO₂e respectively.
+* Notably, even industries like Pharmaceuticals, Biotechnology & Life Sciences, typically perceived as less polluting, show notable emissions — a reminder that every product has a footprint: "Now we know what our health comes at."
+* Many industries have negligible emissions (under 1,000 CO₂e), such as Retailing, Tobacco, and Household & Personal Products, which may reflect smaller product footprints or fewer data records.
+
+
+### 3.4. What are the companies with the highest contribution to carbon emissions?
 
 ```
 SELECT
@@ -259,7 +269,7 @@ LIMIT 	 10;
 | "Lexmark International, Inc."           | 132012.00       | 
 | "Daikin Industries, Ltd."               | 105600.00       | 
 
-### 4.5. What are the countries with the highest contribution to carbon emissions?
+### 3.5. What are the countries with the highest contribution to carbon emissions?
 
 ```
 SELECT
@@ -289,7 +299,7 @@ LIMIT 	 10;
 | Taiwan       | 62875.00        | 
 | India        | 24574.00        | 
 
-### 4.6. What is the trend of carbon footprints (PCFs) over the years?
+### 3.6. What is the trend of carbon footprints (PCFs) over the years?
 
 ```
 SELECT
@@ -311,7 +321,7 @@ ORDER BY
 | 2016 | 1640182.00      | 
 | 2017 | 340271.00       | 
 
-### 4.7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+### 3.7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 
 ```
 SELECT
