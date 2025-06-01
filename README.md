@@ -17,7 +17,7 @@ Our dataset is compiled from publicly available data from nature.com and encompa
 
 The dataset consists of 4 tables containing information regarding carbon emissions generated during the production of goods.
 
-![Database_diagram](images/Database diagram.png)
+![Database_diagram](Database diagram.png)
 
 #### 2.2.1. Table 'product_emissions'
 ```
