@@ -275,11 +275,11 @@ This query sums carbon emissions (carbon_footprint_pcf) per company by joining p
 
 **💡 Insights & Conclusions**
 
-*Gamesa Corporación Tecnológica, S.A., a company in the renewable energy sector, surprisingly tops the list with nearly 9.8 million CO₂e, likely due to emissions from manufacturing heavy equipment like wind turbines.
-*Automotive giants such as Daimler AG, Volkswagen AG, Hino Motors, and General Motors all appear in the top 10, confirming the high carbon intensity of vehicle production.
-*Chemical and industrial manufacturers like Mitsubishi Gas Chemical and Arcelor Mittal also contribute significantly, underlining the energy-intensive nature of their operations.
-*The presence of Lexmark and Daikin Industries suggests that electronics and appliance production also carry substantial carbon footprints.
-*Overall, the top 10 companies account for a substantial portion of total emissions, highlighting how concentrated emissions can be within a few major players in heavy industry and manufacturing.
+* Gamesa Corporación Tecnológica, S.A., a company in the renewable energy sector, surprisingly tops the list with nearly 9.8 million CO₂e, likely due to emissions from manufacturing heavy equipment like wind turbines.
+* Automotive giants such as Daimler AG, Volkswagen AG, Hino Motors, and General Motors all appear in the top 10, confirming the high carbon intensity of vehicle production.
+* Chemical and industrial manufacturers like Mitsubishi Gas Chemical and Arcelor Mittal also contribute significantly, underlining the energy-intensive nature of their operations.
+* The presence of Lexmark and Daikin Industries suggests that electronics and appliance production also carry substantial carbon footprints.
+* Overall, the top 10 companies account for a substantial portion of total emissions, highlighting how concentrated emissions can be within a few major players in heavy industry and manufacturing.
 These insights can help target emissions reduction efforts at high-impact companies and sectors.
 
 ### 3.5. What are the countries with the highest contribution to carbon emissions?
