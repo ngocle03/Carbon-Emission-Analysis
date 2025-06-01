@@ -19,9 +19,9 @@ The dataset consists of 4 tables containing information regarding carbon emissio
 
 #### 2.2.1. Table 'product_emissions'
 ```
-SELECT *
-FROM product_emissions
-LIMIT 10;
+SELECT 	*
+FROM 	product_emissions
+LIMIT 	5;
 ```
 
 | id           | company_id | country_id | industry_group_id | year | product_name                                                    | weight_kg | carbon_footprint_pcf | upstream_percent_total_pcf | operations_percent_total_pcf | downstream_percent_total_pcf | 
@@ -35,9 +35,9 @@ LIMIT 10;
 #### 2.2.2. Table 'companies'
 
 ```
-SELECT *
-FROM companies
-LIMIT 5;
+SELECT 	*
+FROM 	companies
+LIMIT 	5;
 ```
 
 | id | company_name                  | 
@@ -51,9 +51,9 @@ LIMIT 5;
 #### 2.2.3. Table 'countries'
 
 ```
-SELECT *
-FROM countries
-LIMIT 5;
+SELECT 	*
+FROM 	countries
+LIMIT 	5;
 ```
 
 | id | country_name | 
@@ -67,9 +67,9 @@ LIMIT 5;
 #### 2.2.4. Table 'industry_groups'
 
 ```
-SELECT *
-FROM industry_groups
-LIMIT 5;
+SELECT 	*
+FROM 	industry_groups
+LIMIT 	5;
 ```
 
 | id | industry_group                                                         | 
@@ -92,12 +92,15 @@ LIMIT 5;
 
 ```
 SELECT
-    product_name
-    ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
-FROM product_emissions
-GROUP BY product_name
-ORDER BY total_emissions DESC
-LIMIT 10;
+	  product_name
+    	  ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
+FROM
+	  product_emissions
+GROUP BY
+	  product_name
+ORDER BY
+	  total_emissions DESC
+LIMIT 	  10;
 ```
 
 | product_name                                                                                                                       | total_emissions | 
@@ -128,16 +131,19 @@ This query identifies the top 10 products with the highest total carbon emission
 ### 4.2. What are the industry groups of these products?
 ```
 SELECT
-    pe.product_name,
-    ig.industry_group,
-    ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
-FROM product_emissions pe
-JOIN industry_groups ig ON pe.industry_group_id = ig.id
+    	  pe.product_name,
+    	  ig.industry_group,
+    	  ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+FROM
+	  product_emissions pe
+JOIN
+	  industry_groups ig ON pe.industry_group_id = ig.id
 GROUP BY
-    pe.product_name,
-    ig.industry_group
-ORDER BY total_emissions DESC
-LIMIT 10;
+    	  pe.product_name,
+    	  ig.industry_group
+ORDER BY
+	  total_emissions DESC
+LIMIT 	  10;
 ```
 
 | product_name                                                                                                                       | industry_group                     | total_emissions | 
@@ -180,10 +186,14 @@ Some of the highest-emission products are associated with industries often perce
 SELECT
 	ig.industry_group,
 	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
-FROM product_emissions pe
-JOIN industry_groups ig ON pe.industry_group_id = ig.id
-GROUP BY ig.industry_group
-ORDER BY total_emissions DESC;
+FROM
+	product_emissions pe
+JOIN
+	industry_groups ig ON pe.industry_group_id = ig.id
+GROUP BY
+	ig.industry_group
+ORDER BY
+	total_emissions DESC;
 ```
 
 | industry_group                                                         | total_emissions | 
@@ -223,13 +233,17 @@ ORDER BY total_emissions DESC;
 
 ```
 SELECT
-	c.company_name,
-	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
-FROM product_emissions pe
-JOIN companies c ON pe.company_id = c.id
-GROUP BY c.company_name
-ORDER BY total_emissions DESC
-LIMIT 10;
+	 c.company_name,
+	 ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+FROM
+	 product_emissions pe
+JOIN
+	 companies c ON pe.company_id = c.id
+GROUP BY
+	 c.company_name
+ORDER BY
+	 total_emissions DESC
+LIMIT 	 10;
 ```
 
 | company_name                            | total_emissions | 
@@ -249,13 +263,17 @@ LIMIT 10;
 
 ```
 SELECT
-	co.country_name,
-	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
-FROM product_emissions pe
-JOIN countries co ON pe.country_id = co.id
-GROUP BY co.country_name
-ORDER BY total_emissions DESC
-LIMIT 10;
+	 co.country_name,
+	 ROUND(SUM(pe.carbon_footprint_pcf), 2) AS total_emissions
+FROM
+	 product_emissions pe
+JOIN
+	 countries co ON pe.country_id = co.id
+GROUP BY
+	 co.country_name
+ORDER BY
+	 total_emissions DESC
+LIMIT 	 10;
 ```
 
 | country_name | total_emissions | 
@@ -275,11 +293,14 @@ LIMIT 10;
 
 ```
 SELECT
-	year,
-	ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
-FROM product_emissions
-GROUP BY year
-ORDER BY year;
+	 year,
+	 ROUND(SUM(carbon_footprint_pcf), 2) AS total_emissions
+FROM
+	 product_emissions
+GROUP BY
+	 year
+ORDER BY
+	 year;
 ```
 
 | year | total_emissions | 
@@ -297,10 +318,14 @@ SELECT
 	ig.industry_group,
 	year,
 	ROUND(SUM(pe.carbon_footprint_pcf), 2) AS yearly_emissions
-FROM product_emissions pe
-JOIN industry_groups ig ON pe.industry_group_id = ig.id
-GROUP BY ig.industry_group, year
-ORDER BY ig.industry_group, year;
+FROM
+	product_emissions pe
+JOIN
+	industry_groups ig ON pe.industry_group_id = ig.id
+GROUP BY
+	ig.industry_group, year
+ORDER BY
+	ig.industry_group, year;
 ```
 
 | industry_group                                                         | year | yearly_emissions | 
