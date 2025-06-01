@@ -269,6 +269,18 @@ LIMIT 	 10;
 | "Lexmark International, Inc."           | 132012.00       | 
 | "Daikin Industries, Ltd."               | 105600.00       | 
 
+**🧾 Explanation**
+
+This query sums carbon emissions (carbon_footprint_pcf) per company by joining product_emissions with companies, rounding the totals, and returning the top 10 contributors.
+
+**💡 Insights & Conclusions**
+*Gamesa Corporación Tecnológica, S.A., a company in the renewable energy sector, surprisingly tops the list with nearly 9.8 million CO₂e, likely due to emissions from manufacturing heavy equipment like wind turbines.
+*Automotive giants such as Daimler AG, Volkswagen AG, Hino Motors, and General Motors all appear in the top 10, confirming the high carbon intensity of vehicle production.
+*Chemical and industrial manufacturers like Mitsubishi Gas Chemical and Arcelor Mittal also contribute significantly, underlining the energy-intensive nature of their operations.
+*The presence of Lexmark and Daikin Industries suggests that electronics and appliance production also carry substantial carbon footprints.
+*Overall, the top 10 companies account for a substantial portion of total emissions, highlighting how concentrated emissions can be within a few major players in heavy industry and manufacturing.
+These insights can help target emissions reduction efforts at high-impact companies and sectors.
+
 ### 3.5. What are the countries with the highest contribution to carbon emissions?
 
 ```
@@ -299,6 +311,18 @@ LIMIT 	 10;
 | Taiwan       | 62875.00        | 
 | India        | 24574.00        | 
 
+**🧾 Explanation**
+
+This query joins product_emissions with countries using country_id, sums the carbon footprint per country, rounds the values, and returns the top 10 emitting countries.
+
+**💡 Insights & Conclusions**
+* Spain leads by a large margin, contributing nearly 9.8 million CO₂e, largely influenced by emissions from Gamesa Corporación Tecnológica, which dominates product-level emissions in the dataset.
+* Germany, Japan, and the USA follow, reflecting their strong industrial and automotive sectors.
+* Luxembourg appears unexpectedly high, driven by specific high-emitting companies like Arcelor Mittal.
+* South Korea, Brazil, and India contribute less in comparison, but still rank within the top 10.
+* The geographic spread of emissions shows that while industrial powerhouses dominate, individual high-emitting companies can significantly skew national totals.
+These results suggest that national emission levels in the dataset are heavily influenced by the presence of specific high-impact manufacturers, not just overall economic size.
+
 ### 3.6. What is the trend of carbon footprints (PCFs) over the years?
 
 ```
@@ -320,6 +344,17 @@ ORDER BY
 | 2015 | 10840415.00     | 
 | 2016 | 1640182.00      | 
 | 2017 | 340271.00       | 
+
+**🧾 Explanation**
+
+This query groups the data by year, sums the carbon_footprint_pcf for each year, rounds the result to 2 decimal places, and sorts the output chronologically to show the trend over time.
+
+**💡 Insights & Conclusions**
+* Carbon emissions peaked sharply in 2015, with over 10.8 million CO₂e, likely due to the inclusion or expansion of major high-emitting products or companies that year.
+* 2013 and 2014 show moderate emissions growth, indicating a buildup toward the 2015 spike.
+* After 2015, emissions dropped significantly in 2016, and even further in 2017, suggesting either improved emission efficiencies, data gaps, or changes in reporting.
+* The sharp peak followed by a decline may reflect project-based data collection or operational shifts in high-emitting industries.
+Overall, the trend is not linear but marked by a sharp surge and drop, highlighting the need to examine underlying causes—such as data coverage or major product introductions—that may have driven the 2015 spike.
 
 ### 3.7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 
@@ -409,3 +444,15 @@ ORDER BY
 | Trading Companies & Distributors and Commercial Services & Supplies    | 2015 | 239.00           | 
 | Utilities                                                              | 2013 | 122.00           | 
 | Utilities                                                              | 2016 | 122.00           | 
+
+**🧾 Explanation**
+
+This query joins product_emissions with industry_groups, groups the data by industry and year, calculates the total carbon emissions per industry per year, and orders the results to trace emission trends over time.
+
+**💡 Insights & Conclusions**
+* Technology Hardware & Equipment shows a steep decline from 167,361 CO₂e (2014) to just 1,566 CO₂e (2016) before rebounding in 2017. This suggests a temporary shift—possibly production outsourcing or cleaner technologies.
+* Software & Services peaked at 22,856 CO₂e (2015), then dropped drastically to 690 CO₂e (2017). This may reflect efficiency improvements or reporting changes.
+* Media saw a steady drop from 9,645 CO₂e (2013–2014) to 1,808 CO₂e (2016), suggesting reduced emissions intensity or downsizing.
+* Food, Beverage & Tobacco emissions plummeted to 0 CO₂e in 2015, surged in 2016, and then dropped again in 2017 — a volatile trend possibly tied to inconsistent data or specific product records.
+* Capital Goods had a dramatic drop from 93,699 CO₂e (2014) to 3,505 CO₂e (2015) and later climbed again, suggesting a temporary production shift or operational restructuring.
+Several industries, notably Tech Hardware, Software, and Media, exhibit sharp emission reductions over specific years. While this may reflect real progress (e.g., tech efficiency gains or changes in sourcing), some drops are likely influenced by data completeness, temporary shifts in operations, or methodological changes. Sustained declines—if validated—point to industries leading in decarbonization or adapting cleaner production techniques.
